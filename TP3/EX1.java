@@ -52,7 +52,7 @@ public class EX1 {
         System.out.println("Le produit des elements de matrice est : " + P);
     }
     
-    
+    // 5
     static void produitMatriceVecteur(int[][] M, int V[][]){
         int lignes = M.length;
         
