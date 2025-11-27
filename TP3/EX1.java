@@ -53,24 +53,22 @@ public class EX1 {
     }
     
     // 5
-    static void produitMatriceVecteur(int[][] M, int V[][]){
+    static void produitMatriceVecteur(int[][] M, int[] V){
         int lignes = M.length;
-        
-        int[][] P = new int[lignes][colonnes];
-        
-        for(int i=0; i < lignes; i++){
-            int S = 0;
-            for(int j=0; j < 1; j++){
+        int colonnes = M[0].length;
+        int[] R = new int[lignes];
 
-                P[i][j] = V;
+        for (int i = 0; i < lignes; i++) {
+            int S = 0;
+            for (int j = 0; j < colonnes; j++) {
+                S += M[i][j] * V[j];
             }
+            R[i] = S;
         }
         
-        for(int i=0; i < P.length; i++){
+        for(int i=0; i < lignes; i++){
             System.out.print("|");
-            for(int j=0; j < P[0].length; j++){
-                System.out.print(P[i][j] + ", \t");
-            }
+            System.out.print(R[i] + "\t");
             System.out.print("|\n");
         }
     }
@@ -86,7 +84,7 @@ public class EX1 {
             int V = 0;
             for(int j=0; j < colonnes; j++){
                 for(int k=0; k < N.length; k++){
-                    V += (M[i][j] * N[j][i]);
+                    V += (M[i][k] * N[k][i]);
                 }
                 P[i][j] = V;
             }
