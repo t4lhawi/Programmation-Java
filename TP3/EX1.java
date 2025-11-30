@@ -1,7 +1,6 @@
 // Nom : Mohamed Talhaoui
 // Filière : GSEIR3 (S1) | 2025/2026
-import java.util.Scanner;
-import java.util.Arrays;
+import java.util.*;
 
 public class EX1 {
     
@@ -56,6 +55,7 @@ public class EX1 {
     static void produitMatriceVecteur(int[][] M, int[] V){
         int lignes = M.length;
         int colonnes = M[0].length;
+
         int[] R = new int[lignes];
 
         for (int i = 0; i < lignes; i++) {
@@ -99,25 +99,126 @@ public class EX1 {
         }
     }
     
+    // 7
+    static void MatriceCarreSysmetrie(int[][] M){
+        int lignes = M.length;
+        int colonnes = M[0].length;
+        int Sym = 1;
+        
+        if(lignes == colonnes){
+            for(int i=0; i<lignes; i++){
+                for(int j=i+1; j<colonnes; j++){
+                    if(M[i][j] == M[j][i]){
+                        Sym++;
+                    }
+                }
+            }
+            
+            if(Sym == lignes){
+                System.out.println("Cette Matrice Carrée est Symétrique !");
+            } else {
+                System.out.println("Cette Matrice Carrée n'est pas Symétrique !");
+            }
+
+        } else {
+            System.out.println("Cette Matrice Ni Carrée Ni Symétrique.");
+        }
+    }
     
+    // 8
+    static void tableMultiplication(){
+        System.out.print("X*Y\t");
+        for (int y = 0; y <= 10; y++) {
+            System.out.print(y + "\t");
+        }
+        
+        System.out.println("\n-------------------------------------------------------------------------------------");
+
+        for (int x = 0; x <= 10; x++) {
+            System.out.print(x + "\t");
+            for (int y = 0; y <= 10; y++) {
+                System.out.print(x * y + "\t");
+            }
+            System.out.println();
+        }   
     
+    }
+    
+    // 9
+    static int plusGrandElement(int[][] M){
+        int max = M[0][0];
+        for(int i=0; i < M.length; i++){
+            for(int j=0; j < M[0].length; j++){
+                if(max < M[i][j]){
+                    max = M[i][j];
+                }
+            }
+        }
+        return max;
+    }
+    
+    // 10
+    static void trianglePascal(int N){
+        int[][] T = new int[N][N];
+        
+        for(int i=0; i < N; i++){
+            for(int j=0; j <= i; j++){
+                if( j == 0 || j == i){
+                    T[i][j] = 1;
+                } else{
+                    T[i][j] = T[i-1][j-1] + T[i-1][j];
+                }
+                System.out.print(T[i][j] + "  ");
+            }
+            System.out.println();
+        }
+    }
+    
+    // 11
+    static void carreMagique(int[][] C){        
+        if(C.length == C[0].length){
+            int N = C.length;
+            int sommeDiag = 0;
+            int sommeColonnes = 0;
+            int egaux = 0;
+            
+            for(int i=0; i<N; i++){
+                sommeDiag += C[i][i];
+            }
+            
+            for(int i=0; i< N; i++){
+                for(int j=0; j<N; j++){
+                    sommeColonnes += C[j][i];
+                }
+                if(sommeColonnes == sommeDiag){
+                    egaux++;
+                    sommeColonnes = 0;
+                }
+            }
+            
+            if(egaux == N){
+                System.out.println("YES");
+            } else {
+                System.out.println("NON");
+            }
+        } else {
+            System.out.println("Pas Matrice Carre");
+        }
+    }
     
     public static void main(String[] args) {
-        // Matrice 5*5
-        int[][] M = 
-        {{1,    2,      3,	    4,	    5},
-        {6,	    7,	    8,	    9,	    10},
-        {11,	12,	    13,	    14,	    15},
-        {16,	17,	    18,	    19,	    20},
-        {21,	22,	    23,	    24,	    25},
+        int[][] M = {
+        {4, 9, 2},
+        {3, 5, 7},
+        {8, 1, 6}
         };
         
-        int[][] N = 
-        {{1,	2,	    3,	    4,	    5},
-        {6,	    7,	    8,	    9,	    10},
-        {11,	12,	    13,	    14,	    15},
-        {16,	17,	    18,	    19,	    20},
-        {21,	22,	    23,	    24,	    25},
+        int[][] N = {
+        {10, 20, 30},
+        {40, 50, 60},
+        {70, 80, 90}
         };
+        
+        int[] V = {1, 1, 1, 1, 1};                
     }
 }
