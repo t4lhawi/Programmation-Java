@@ -3,7 +3,6 @@
 import java.util.*;
 
 public class EX1 {
-    
     // 1
     static void sommeMatrice(int[][] M){
         int S = 0;
